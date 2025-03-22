@@ -7,7 +7,9 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       physics: BouncingScrollPhysics(),
-      slivers: [],
+      slivers: [
+        SliverToBoxAdapter(),
+      ],
     );
   }
 }
