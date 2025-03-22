@@ -1,6 +1,8 @@
 import 'package:books/core/utils/assets.dart';
+import 'package:books/core/utils/router.dart';
 import 'package:books/core/utils/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashScreenBody extends StatefulWidget {
   const SplashScreenBody({super.key});
@@ -17,6 +19,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
   @override
   void initState() {
     animationInit();
+    navigateToHome();
     super.initState();
   }
 
@@ -50,7 +53,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
     super.dispose();
   }
 
-  animationInit() {
+  void animationInit() {
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 1),
@@ -60,5 +63,12 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
       end: Offset.zero,
     ).animate(animationController);
     animationController.forward();
+  }
+
+  void navigateToHome() async {
+    Future.delayed(
+      Duration(seconds: 2),
+      () => GoRouter.of(context).push(AppRouter.kHomeViewRoute),
+    );
   }
 }
